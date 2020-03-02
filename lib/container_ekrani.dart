@@ -4,21 +4,38 @@ class ContainerEkrani extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Container Example'),),
+        appBar: myAppBar(),
       body: Container(
-          color: Colors.purple,
+          decoration: myBoxDecoration(),
           width: 300.0,
           height: 400.0,
-          child: ListView(
-            children: <Widget>[
-                Column(
-                    children: <Widget>[
-                        Text('Merhaba Dünya')
-                    ],
-                ),
-            ],
-          ),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+              buildMyText()
+          ],)
       ),
     );
   }
+
+  Text buildMyText() {
+    return Text('Merhaba Dünya', style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.0,
+                          fontFamily: 'Oxanium'
+                      ),);
+  }
+
+  myBoxDecoration() {
+      return BoxDecoration(
+          color: Colors.purple,
+          shape: BoxShape.circle
+      );
+  }
+}
+myAppBar(){
+    return  AppBar(title: Text('Merhaba'),);
 }
