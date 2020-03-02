@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ders1/profil_ekrani.dart';
 
 import 'container_ekrani.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(
+  home: ProfilEkrani(),
+));
 
 class MyApp extends StatelessWidget {
   @override

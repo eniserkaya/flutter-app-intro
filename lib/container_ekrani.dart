@@ -13,7 +13,10 @@ class ContainerEkrani extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-              buildMyText()
+              Image(
+                  image: AssetImage('assets/images/resim.png'),
+                 // image: NetworkImage('https://avatars3.githubusercontent.com/u/11557604?s=460&v=4'),
+              )
           ],)
       ),
     );
