@@ -4,6 +4,8 @@ import 'package:flutter_app_ders1/profil_ekrani.dart';
 import 'container_ekrani.dart';
 
 void main() => runApp(MaterialApp(
+  debugShowCheckedModeBanner: false,
+  debugShowCheckedModeBanner: false,
   home: ProfilEkrani(),
 ));
 
