@@ -8,9 +8,9 @@ part 'kullanici.g.dart';
 class Kullanici extends Object {
  String ad;
  String soyad;
- List<Sehir> sehirList;
+ List<Sehir> gezilenYerler;
 
- Kullanici(this.ad, this.soyad, this.sehirList);
+ Kullanici(this.ad, this.soyad, this.gezilenYerler);
 
  factory Kullanici.fromJson(Map<String,dynamic> json) => _$KullaniciFromJson(json);
 

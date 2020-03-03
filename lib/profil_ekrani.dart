@@ -6,6 +6,7 @@ import 'package:flutter_app_ders1/profil_duzenleme_ekrani.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'container_ekrani.dart';
+import 'gezdigim_yerler.dart';
 import 'model/profil.dart';
 
 class ProfilEkrani extends StatefulWidget {
@@ -64,10 +65,10 @@ class _ProfilEkraniState extends State<ProfilEkrani> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Center(
-              child: CircleAvatar(
+              child: widget._profil.filePath != null ? CircleAvatar(
                 backgroundImage: FileImage(new File(widget._profil.filePath)),
                 radius: 80.0,
-              ),
+              ) : Text('Profil Fotoğrafı'),
             ),
             Divider(
               color: Colors.grey[200],
