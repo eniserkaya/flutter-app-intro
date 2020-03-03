@@ -12,6 +12,8 @@ class Profil extends Object {
 
     Profil(this.adSoyad, this.adres, this.kurum, this.email, this.filePath);
 
+    Profil.empty();
+
     factory Profil.fromJson(Map<String,dynamic> json) => _$ProfilFromJson(json);
     Map<String,dynamic> toJson() => _$ProfilToJson(this);
 
