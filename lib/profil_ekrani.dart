@@ -50,7 +50,7 @@ class _ProfilEkraniState extends State<ProfilEkrani> {
               context,
               MaterialPageRoute(
                   builder: (context) => RehberEkrani()),
-            )
+            );
           },icon: Icon(Icons.contacts),)
 
         ],
