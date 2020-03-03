@@ -27,7 +27,7 @@ class ProfilEkrani extends StatelessWidget {
           children: <Widget>[
             Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/resim.png'),
+                backgroundImage: NetworkImage('https://avatars3.githubusercontent.com/u/11557604?s=460&v=4'),
                 radius: 80.0,
               ),
             ),
