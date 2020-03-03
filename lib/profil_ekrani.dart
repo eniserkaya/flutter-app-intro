@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ders1/profil_duzenleme_ekrani.dart';
+import 'package:flutter_app_ders1/rehber_ekrani.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'container_ekrani.dart';
@@ -43,7 +44,15 @@ class _ProfilEkraniState extends State<ProfilEkrani> {
                   });
                 });
               },
-              child: Icon(Icons.edit))
+              child: Icon(Icons.edit)),
+          IconButton(onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => RehberEkrani()),
+            )
+          },icon: Icon(Icons.contacts),)
+
         ],
         title: Text('Profil'),
         centerTitle: true,
