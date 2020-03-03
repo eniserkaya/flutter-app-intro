@@ -1,20 +1,49 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ders1/profil_duzenleme_ekrani.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'container_ekrani.dart';
+import 'model/profil.dart';
 
-class ProfilEkrani extends StatelessWidget {
+class ProfilEkrani extends StatefulWidget {
+  Profil _profil = new Profil.empty();
+
+  @override
+  _ProfilEkraniState createState() => _ProfilEkraniState();
+}
+
+class _ProfilEkraniState extends State<ProfilEkrani> {
+  @override
+  void initState() {
+    profilVerisiniGetir().then((onValue) {
+      var decodedJson = json.decode(onValue);
+      widget._profil = Profil.fromJson(decodedJson);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
         actions: <Widget>[
-            GestureDetector(
-                onTap: (){
-                    Navigator.push( context, MaterialPageRoute(builder: (context) => ProfilDuzenlemeEkrani()), );
-                },
-                child: Icon(Icons.edit))
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProfilDuzenlemeEkrani()),
+                ).then((onValue){
+                  profilVerisiniGetir().then((onValue) {
+                    var decodedJson = json.decode(onValue);
+                    widget._profil = Profil.fromJson(decodedJson);
+                  });
+                });
+              },
+              child: Icon(Icons.edit))
         ],
         title: Text('Profil'),
         centerTitle: true,
@@ -28,7 +57,8 @@ class ProfilEkrani extends StatelessWidget {
           children: <Widget>[
             Center(
               child: CircleAvatar(
-                backgroundImage: NetworkImage('https://avatars3.githubusercontent.com/u/11557604?s=460&v=4'),
+                backgroundImage: NetworkImage(
+                    'https://avatars3.githubusercontent.com/u/11557604?s=460&v=4'),
                 radius: 80.0,
               ),
             ),
@@ -44,7 +74,7 @@ class ProfilEkrani extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              'Ahmed Enis Erkaya',
+              widget._profil.adSoyad ?? 'Henüz dolmadı',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
@@ -62,7 +92,7 @@ class ProfilEkrani extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              'Ankara/Türkiye',
+              widget._profil.adres ?? 'Henüz dolmadı',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
@@ -80,7 +110,7 @@ class ProfilEkrani extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              'YTE',
+              widget._profil.kurum ?? 'Henüz dolmadı',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
@@ -100,7 +130,7 @@ class ProfilEkrani extends StatelessWidget {
                   width: 10.0,
                 ),
                 Text(
-                  'enis.erkaya@tubitak.gov.tr',
+                  widget._profil.email ?? 'Henüz dolmadı',
                   style: TextStyle(
                       color: Colors.amberAccent[200],
                       letterSpacing: 2.0,
@@ -113,5 +143,10 @@ class ProfilEkrani extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<String> profilVerisiniGetir() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('profil');
   }
 }
