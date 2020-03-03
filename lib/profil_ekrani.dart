@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ders1/profil_duzenleme_ekrani.dart';
 
 import 'container_ekrani.dart';
 
@@ -11,7 +12,7 @@ class ProfilEkrani extends StatelessWidget {
         actions: <Widget>[
             GestureDetector(
                 onTap: (){
-                    Navigator.push( context, MaterialPageRoute(builder: (context) => ContainerEkrani()), );
+                    Navigator.push( context, MaterialPageRoute(builder: (context) => ProfilDuzenlemeEkrani()), );
                 },
                 child: Icon(Icons.edit))
         ],
