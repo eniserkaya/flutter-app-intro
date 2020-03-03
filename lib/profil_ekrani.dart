@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ders1/profil_duzenleme_ekrani.dart';
@@ -43,7 +44,14 @@ class _ProfilEkraniState extends State<ProfilEkrani> {
                   });
                 });
               },
-              child: Icon(Icons.edit))
+              child: Icon(Icons.edit)),
+          IconButton(icon: Icon(Icons.directions_bus), onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => GezdigimYerlerEkrani()),
+            );
+          },)
         ],
         title: Text('Profil'),
         centerTitle: true,
@@ -57,8 +65,7 @@ class _ProfilEkraniState extends State<ProfilEkrani> {
           children: <Widget>[
             Center(
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://avatars3.githubusercontent.com/u/11557604?s=460&v=4'),
+                backgroundImage: FileImage(new File(widget._profil.filePath)),
                 radius: 80.0,
               ),
             ),

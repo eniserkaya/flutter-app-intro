@@ -12,6 +12,7 @@ class Kullanici extends Object {
 
  Kullanici(this.ad, this.soyad, this.sehirList);
 
+ factory Kullanici.fromJson(Map<String,dynamic> json) => _$KullaniciFromJson(json);
 
 
 }
